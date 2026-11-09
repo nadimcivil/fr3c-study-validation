@@ -53,12 +53,12 @@ MAE in MPa, 5-fold cross-validation (full table: `results/validation_results.csv
    (MAE about 0.3 vs 0.7 MPa), consistent with the original paper.
 2. With study-wise splitting the advantage largely disappears (KNN error
    rises about 2.4x, from 0.312 to 0.761 MPa on the 330-sample set).
-3. 3. On the full dataset, ML models are worse than the formula on unseen
+3. On the full dataset, ML models are worse than the formula on unseen
    studies. The 16 flagged samples from one study are the likely cause,
    since results change sharply when they are removed, but this was not
    tested in isolation.
 4. The only method below the ACI error is a small model correcting the ACI
-   ratio (0.686 vs 0.709 MPa). With 33 studies this gap is too small to be
+   ratio (0.686 vs 0.709 MPa). With 33 studies, this gap is too small to be
    treated as evidence.
 
 ![MAE comparison](figures/mae_random_vs_study.png)
