@@ -40,13 +40,26 @@ use (predicting a new mix in a new lab) corresponds to a study-wise split.
 
 ## Findings
 
-Fill in after running `python src/validate.py` (see
-`results/validation_results.csv` and `figures/mae_random_vs_study.png`).
+MAE in MPa, 5-fold cross-validation (full table: `results/validation_results.csv`).
 
-<!-- Paste the key rows of the results table here. Suggested summary:
-- Random split: ML models MAE ≈ ...  vs ACI ≈ ...
-- Study-wise split, all data: ...
-- Study-wise split, flagged samples removed: ...
+| Data | Split | ACI | KNN | RF | XGBoost | Small XGB (ratio) |
+|---|---|---|---|---|---|---|
+| All 346 | random | 1.081 | 0.348 | 0.352 | 0.307 | 0.496 |
+| All 346 | study-wise | 1.081 | 1.238 | 1.433 | 1.390 | 1.380 |
+| 330 (flagged removed) | random | 0.709 | 0.312 | 0.304 | 0.299 | 0.407 |
+| 330 (flagged removed) | study-wise | 0.709 | 0.761 | 0.759 | 0.757 | 0.686 |
+
+1. With a random split, ML models beat the ACI-type formula by a wide margin
+   (MAE about 0.3 vs 0.7 MPa), consistent with the original paper.
+2. With study-wise splitting the advantage largely disappears (KNN error
+   rises about 2.4x, from 0.312 to 0.761 MPa on the 330-sample set).
+3. On the full dataset, ML models are worse than the formula on unseen
+   studies, mainly because 16 samples from one study distort training.
+4. The only method below the ACI error is a small model correcting the ACI
+   ratio (0.686 vs 0.709 MPa). With 33 studies this gap is too small to be
+   treated as evidence.
+
+![MAE comparison](figures/mae_random_vs_study.png)
 -->
 
 ## Limitations
