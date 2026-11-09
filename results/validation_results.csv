@@ -1,0 +1,29 @@
+dataset,split,model,R2,MAE_MPa
+all data (346),random,ACI (0.56*sqrt(fc)),0.207,1.081
+all data (346),random,Constant ratio,0.266,1.199
+all data (346),random,KNN,0.958,0.348
+all data (346),random,Random Forest,0.948,0.352
+all data (346),random,XGBoost,0.964,0.307
+all data (346),random,Ridge (ratio),0.638,0.976
+all data (346),random,Small XGB (ratio),0.911,0.496
+all data (346),study,ACI (0.56*sqrt(fc)),0.207,1.081
+all data (346),study,Constant ratio,0.179,1.255
+all data (346),study,KNN,0.027,1.238
+all data (346),study,Random Forest,-0.084,1.433
+all data (346),study,XGBoost,-0.037,1.39
+all data (346),study,Ridge (ratio),-0.139,1.532
+all data (346),study,Small XGB (ratio),-0.081,1.38
+flagged removed (330),random,ACI (0.56*sqrt(fc)),0.427,0.709
+flagged removed (330),random,Constant ratio,0.432,0.731
+flagged removed (330),random,KNN,0.897,0.312
+flagged removed (330),random,Random Forest,0.893,0.304
+flagged removed (330),random,XGBoost,0.897,0.299
+flagged removed (330),random,Ridge (ratio),0.671,0.548
+flagged removed (330),random,Small XGB (ratio),0.829,0.407
+flagged removed (330),study,ACI (0.56*sqrt(fc)),0.427,0.709
+flagged removed (330),study,Constant ratio,0.401,0.743
+flagged removed (330),study,KNN,0.352,0.761
+flagged removed (330),study,Random Forest,0.318,0.759
+flagged removed (330),study,XGBoost,0.368,0.757
+flagged removed (330),study,Ridge (ratio),0.313,0.747
+flagged removed (330),study,Small XGB (ratio),0.433,0.686
