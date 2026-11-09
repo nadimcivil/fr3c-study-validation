@@ -87,4 +87,4 @@ machine learning. *Cleaner Materials*. (Complete the DOI from the paper.)
 
 ## Author
 
-Add your name, university and contact here.
+Nadim Hasan, University of Dhaka
