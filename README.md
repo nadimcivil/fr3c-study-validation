@@ -32,11 +32,14 @@ use (predicting a new mix in a new lab) corresponds to a study-wise split.
 - Baselines: ACI-type formula `ft = 0.56·sqrt(fc)` and a constant ratio
   learned from training data.
 - Metrics: R² and MAE (MPa).
-- Sensitivity check: 16 samples (all from one study, study index 31) have
-  `ft / sqrt(fc) > 1.3` (ft up to 16 MPa at fc ≈ 70–78 MPa), which is
-  physically implausible for concrete of this strength. Every analysis is
-  reported **with and without** these samples. I have not verified the
-  original source of these values, so they are flagged, not declared wrong.
+- Sensitivity check: 16 samples (all from one study, the 32nd entry in
+  Appendix 1) have ft/sqrt(fc) between 1.40 and 1.83 (ft about 9.9 to 16.0 MPa
+  at fc of about 49 to 78 MPa), compared with a median of 0.53 (interquartile
+  range 0.48 to 0.61, maximum 1.24) for the remaining 330 samples. These values
+  are far outside the range of the rest of the dataset and atypical for
+  concrete of this strength. Every analysis is reported with and without these
+  samples. I have not verified the original source of these values, so they
+  are flagged, not declared wrong.
 
 ## Findings
 
@@ -74,7 +77,11 @@ MAE in MPa, 5-fold cross-validation (full table: `results/validation_results.csv
   the same samples.
 - ACI comparison uses the common approximation `0.56·sqrt(fc)`, not the full
   code procedure, and the formula was not designed for fibre/rubber/RCA mixes.
-- No hyperparameter tuning was performed; hyperparameters follow the paper.
+- No hyperparameter tuning was performed. KNN and XGBoost settings follow the
+  paper; the Random Forest and the two small ratio models use fixed settings
+  chosen by me.
+- Each result comes from a single run of 5-fold cross-validation with fixed
+  seeds; repeated cross-validation was not performed.
 - Study IDs depend on row order of the original CSV.
 
 ## Reproduce
@@ -102,6 +109,8 @@ Pal, A., Ahmed, K.S., Yazdani, N. (2025). Data driven tensile strength
 prediction for fiber-reinforced rubberized recycled aggregate concrete using
 machine learning. *Cleaner Materials*, 17, 100323.
 https://doi.org/10.1016/j.clema.2025.100323
+
+
 
 ## Author
 
