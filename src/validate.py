@@ -138,20 +138,26 @@ def main(path, outdir):
     print(res.to_string(index=False))
 
     # Figure: MAE under random vs study-wise split (all data)
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4.2), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4.6), sharey=True)
     for ax, (dataset, sub) in zip(axes, res.groupby("dataset", sort=False)):
         piv = sub.pivot(index="model", columns="split", values="MAE_MPa")
         piv = piv.loc[res["model"].unique()]
-        piv[["random", "study"]].plot.bar(ax=ax, color=["#4C72B0", "#C44E52"])
+        piv = piv[["random", "study"]]
+        piv.columns = ["random split", "study-wise split"]
+        piv.plot.bar(ax=ax, color=["#4C72B0", "#C44E52"], legend=False)
         ax.set_title(dataset)
         ax.set_xlabel("")
+        ax.set_ylim(0, 1.8)
         ax.tick_params(axis="x", rotation=40)
         for lab in ax.get_xticklabels():
             lab.set_ha("right")
     axes[0].set_ylabel("MAE (MPa), 5-fold CV")
-    plt.tight_layout()
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper center", ncol=2, frameon=False,
+               bbox_to_anchor=(0.5, 1.02))
+    plt.tight_layout(rect=(0, 0, 1, 0.94))
     plt.savefig(os.path.join(outdir, "figures", "mae_random_vs_study.png"),
-                dpi=300)
+                dpi=300, bbox_inches="tight")
     plt.close()
 
 
