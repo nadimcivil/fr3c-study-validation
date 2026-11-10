@@ -68,7 +68,10 @@ MAE in MPa, 5-fold cross-validation (full table: `results/validation_results.csv
 - Only 33 independent studies, so differences between models are noisy.
   Small gaps (a few hundredths of an MPa) should not be interpreted.
 - The flag threshold (1.3) was chosen after seeing the results. Both versions
-  of every result are reported for that reason.
+  of every result are reported for that reason. However, all 16 flagged
+  samples have ft/sqrt(fc) between 1.40 and 1.83, while the remaining 330
+  samples are at most 1.24, so any threshold between 1.24 and 1.40 selects
+  the same samples.
 - ACI comparison uses the common approximation `0.56·sqrt(fc)`, not the full
   code procedure, and the formula was not designed for fibre/rubber/RCA mixes.
 - No hyperparameter tuning was performed; hyperparameters follow the paper.
